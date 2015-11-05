@@ -13,3 +13,23 @@ y++; // not allowed;
 - var/const control binding
 - const prevents assignment
 - `Object.freeze()` prevents writing --> 'shallow' immutability
+
+
+## Closure
+- definition (loose): when a function "remembers" the variables around it even when that function is executed elsewhere
+- ~ execution environment
+- if the input never changes, you can have purity, assuming interal mutation is consistent
+
+## Recursion
+- incredibly important & useful
+- need to watch for stack overflow
+- when a function calls another:
+	- first, a stack frame is created
+    - the stack frames don't get flushed properly because the function hasn't finished yet; (no tail-call optimisation yet)
+ - recursion allows for elegant and expressive solutions
+ - reminder: do your base-case first
+ 
+ ## Transformation
+ - predicate: pure function that gets applied
+ 
+ 
