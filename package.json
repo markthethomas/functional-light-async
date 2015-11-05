@@ -1,0 +1,22 @@
+{
+  "name": "functional-light-async",
+  "version": "1.0.0",
+  "description": "Code, notes, etc. for a frontendmasters workshop w/ Kyle Simpson",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markthethomas/functional-light-async.git"
+  },
+  "author": "Mark Thomas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markthethomas/functional-light-async/issues"
+  },
+  "homepage": "https://github.com/markthethomas/functional-light-async#readme",
+  "dependencies": {
+    "tape": "^4.2.2"
+  }
+}
