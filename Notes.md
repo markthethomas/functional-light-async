@@ -31,5 +31,4 @@ y++; // not allowed;
  
  ## Transformation
  - predicate: pure function that gets applied
- 
- 
+ - apply a predicate to a set, creating a transformed copy of the input
