@@ -1,3 +1,4 @@
+# Functional-light
 ##Composition
 The joining of functions such that output of `x()` can be used by `y()`...`n()`. You *usually* see things nested within each other so the return values can be consumed in outward fashion.
 
@@ -32,3 +33,29 @@ y++; // not allowed;
  ## Transformation
  - predicate: pure function that gets applied
  - apply a predicate to a set, creating a transformed copy of the input
+
+
+# Async
+- inversion of control: we have to rely on non-sequential patterns that don't map well to how we reason
+- thunk: a function that has everything it needs to return a value; simply returns it's passed params
+   - becomes a state-container/wrapper and we can now pass it around and execute it to get the value out
+
+
+# Day 2
+Agenda: 
+- Paralell vs async
+- callbacks
+- thunks
+- promises
+- generators/corouteines
+- event reactive (observables)
+- CSP (channel-oriented concurrency)
+
+## Paralell vs async
+- not the same thing
+- parallelism: usually expressed through threads and threading
+- non-paralellism: usually single-threaded
+
+
+
+
