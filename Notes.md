@@ -55,7 +55,41 @@ Agenda:
 - not the same thing
 - parallelism: usually expressed through threads and threading
 - non-paralellism: usually single-threaded
+- synchronous execution of long-duration (>= ~ 5ms) tasks --> **terrible!**
+- the event loop is only ever executing one task at any given time
+- events are reliably ordered
+- async programming is concurrency management
 
+```
+setTimeout(function(){
+	console.log('callback')
+    setTimeout(function(){
+		console.log('another callback');
+            setTimeout(function(){
+				console.log('another callback still');
+			}, 1000);
+	}, 1000);
+}, 1000)
+```
+- now/later split
+- **not** just the style/indentation —> that is just a side-effect
+- you can 'fix' the stylistic aspect with continuation passing or using named functions
+- we've tried various things to get everything to work, but it usually doesn't -> two callbacks for err & val, 
 
+## Thunks
+- a function that has everything it needs to give you a value back
+- precursor/underpinning aspect of/to promises
+```
+// synchronous thunk
+function add(x, y) {
+  return x + y;
+}
 
+// the thunk is the container wrapper for the value
+var thunk = function() {
+  return add(10, 15);
+}
 
+thunk(); // 25
+
+```
