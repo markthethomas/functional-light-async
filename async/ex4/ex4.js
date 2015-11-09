@@ -1,3 +1,5 @@
+'use strict';
+
 function fakeAjax(url,cb) {
 	var fake_responses = {
 		"file1": "The first text",
@@ -33,4 +35,21 @@ function getFile(file) {
 // but only once previous rendering
 // is done.
 
-// ???
+['file1', 'file2', 'file3']
+.map((file) => getFile(file))
+.reduce((chain, current) => {
+	return chain
+		.then(() => current)
+		.then(output)
+}, Promise.resolve())
+.then(() => {
+	output('done!')
+})
+
+// This method takes an array, maps across each
+// value to give you a promise, then uses reduce to compose
+// each promise resolution together. It sets a chainable Promise
+// as the inital value, then adds to that chain in each iteration by
+// insserting the current promise into the chain being built and then
+// uses the resolution of that promise to output the value. once
+// we're all done, we chain one last .then off of everything to ouput done
