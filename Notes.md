@@ -149,5 +149,36 @@ promise.then(finish, error);
 - (also not from JavaScript)
 - syntatic form of declaring a state-machine; these declaratively step through a series of transformations
 - new keyword `yield`
+- local blocking; cooperative concurrency (as opposed to preemptive concurrency)
 
+```   
+    Generator *
+		  v
+function()* {
+	console.log('hi');
+	yield;
+    console.log('Hi');
+}
+
+var it = gen();
+it.next(); // Hello
+it.next(); // World
+```
+
+- can be used for message passing
+
+```
+function* main(){
+	yield 1;
+    yield 2;
+}
+let it = main();
+it.next(); // {value: 1, done: false}
+it.next(); // {value: 2, done: false}
+
+it.next(); // {value: undefined, done: true}
+
+```
+- if you return from a generator, that value will be the last one sent to a `.next()` call
+- **promises + generators**: yield promises, the promises will resolve the generator
 
