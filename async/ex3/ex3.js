@@ -20,8 +20,23 @@ function output(text) {
 // **************************************
 
 function getFile(file) {
-	// what do we do here?
+	return new Promise(function(resolve) {
+		fakeAjax(file, resolve);
+	});
 }
 
 // request all files at once in "parallel"
-// ???
+const file1 = getFile('file1');
+const file2 = getFile('file2');
+const file3 = getFile('file3');
+
+// the output function has the same signature as the resolve
+// function so we can just pass it in
+file1
+.then(output)
+.then(() => file2)
+.then(output)
+.then(() => file3)
+.then(output)
+.then(() => output('done!'))
+.catch(err => console.error(err))
