@@ -144,4 +144,10 @@ promise.then(finish, error);
 
 -----
 
-##
+## Generators
+- do not have a run-to-completion semantic
+- (also not from JavaScript)
+- syntatic form of declaring a state-machine; these declaratively step through a series of transformations
+- new keyword `yield`
+
+
