@@ -71,6 +71,7 @@ setTimeout(function(){
 	}, 1000);
 }, 1000)
 ```
+
 - now/later split
 - **not** just the style/indentation —> that is just a side-effect
 - you can 'fix' the stylistic aspect with continuation passing or using named functions
@@ -79,6 +80,7 @@ setTimeout(function(){
 ## Thunks
 - a function that has everything it needs to give you a value back
 - precursor/underpinning aspect of/to promises
+
 ```
 // synchronous thunk
 function add(x, y) {
@@ -91,5 +93,36 @@ var thunk = function() {
 }
 
 thunk(); // 25
+```
+
+## Promises
+- ~ future values
+- will eventually become fulfilled, but we need to reason about it while we wait for that to happen
+- promises uninvert the inversion of control
+- example API:
 
 ```
+function finish() {
+	doFoo();
+    somethingElse();
+}
+
+function error(err) {
+	console.log(err);
+}
+
+let promise = doAsyncThing(value)
+
+promise.then(finish, error);
+```
+
+- Promise trust: 
+   1. only resolved once
+   2. either success OR error
+   3. messages passed/kept
+   4. exceptions become errors
+   5. immutable once resolved
+- flow control: can be accomplished via promise chaining
+- try to **not** use tons of inline function calls in promise chains
+- each `.then()` call returns a new promise using the default `resolve()` handler
+
