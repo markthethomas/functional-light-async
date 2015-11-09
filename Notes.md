@@ -182,3 +182,13 @@ it.next(); // {value: undefined, done: true}
 - if you return from a generator, that value will be the last one sent to a `.next()` call
 - **promises + generators**: yield promises, the promises will resolve the generator
 
+## Recap Quiz
+- **callback**: a deficiency of the callbacks-alone pattern that involved non-local, non-sequential reasoning and an inversion of control (really has nothign to do with nesting/stylistic stuff!)
+- **promises**: 
+	1. future value
+    2. placeholder
+    3. callback manager
+- **generators**: pause with `yield`, resume with `#next()`
+ 	- yield a promise, a promise can then resume the generator
+    
+    
