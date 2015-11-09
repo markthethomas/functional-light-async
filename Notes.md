@@ -34,6 +34,7 @@ y++; // not allowed;
  - predicate: pure function that gets applied
  - apply a predicate to a set, creating a transformed copy of the input
 
+-----
 
 # Async
 - inversion of control: we have to rely on non-sequential patterns that don't map well to how we reason
@@ -76,6 +77,7 @@ setTimeout(function(){
 - **not** just the style/indentation —> that is just a side-effect
 - you can 'fix' the stylistic aspect with continuation passing or using named functions
 - we've tried various things to get everything to work, but it usually doesn't -> two callbacks for err & val, 
+-----
 
 ## Thunks
 - a function that has everything it needs to give you a value back
@@ -94,6 +96,7 @@ var thunk = function() {
 
 thunk(); // 25
 ```
+-----
 
 ## Promises
 - ~ future values
@@ -126,3 +129,12 @@ promise.then(finish, error);
 - try to **not** use tons of inline function calls in promise chains
 - each `.then()` call returns a new promise using the default `resolve()` handler
 
+## Promise Abstractions
+1. `Promise.all(Array[Promise]), -> Promise`
+	- normalizes an array of promises, returns an ordered array of the completion results
+    - ~ **gate**
+2. `Promise.race(Array[Promise]), -> Promise`
+
+-----
+
+##
