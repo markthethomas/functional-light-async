@@ -1,3 +1,10 @@
+## tl;dr
+_These are my notes from a two-day JavaScript workshop taught by Kyle Simpson (@getify everywhere) for Frontend Masters._
+
+_I tried to keep the notes minimal but helpful — I hope they can be of some small help you._
+
+-----
+# Day 1
 # Functional-light
 ##Composition
 The joining of functions such that output of `x()` can be used by `y()`...`n()`. You *usually* see things nested within each other so the return values can be consumed in outward fashion.
