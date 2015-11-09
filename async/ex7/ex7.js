@@ -1,3 +1,5 @@
+'use strict';
+
 function fakeAjax(url,cb) {
 	var fake_responses = {
 		"file1": "The first text",
@@ -20,8 +22,8 @@ function output(text) {
 // **************************************
 
 function getFile(file) {
-	return ASQ(function(done){
-		fakeAjax(file,done);
+	return new Promise(function(resolve){
+		fakeAjax(file,resolve);
 	});
 }
 
@@ -32,4 +34,14 @@ function getFile(file) {
 // but only once previous rendering
 // is done.
 
-// ???
+function* main() {
+	let p1 = getFile('file1');
+	let p2 = getFile('file2');
+	let p3 = getFile('file3');
+
+	output(yield p1);
+	output(yield p2);
+	output(yield p3);
+}
+let foo = main();
+// I get the idea here; just need to use a runner to create the promises + generators next()-ing
