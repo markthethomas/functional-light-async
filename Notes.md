@@ -1,3 +1,10 @@
+## tl;dr
+_These are my notes from a two-day JavaScript workshop taught by Kyle Simpson (@getify everywhere) for Frontend Masters._
+
+_I tried to keep the notes minimal but helpful — I hope they can be of some small help you._
+
+-----
+# Day 1
 # Functional-light
 ##Composition
 The joining of functions such that output of `x()` can be used by `y()`...`n()`. You *usually* see things nested within each other so the return values can be consumed in outward fashion.
@@ -34,6 +41,7 @@ y++; // not allowed;
  - predicate: pure function that gets applied
  - apply a predicate to a set, creating a transformed copy of the input
 
+-----
 
 # Async
 - inversion of control: we have to rely on non-sequential patterns that don't map well to how we reason
@@ -76,6 +84,7 @@ setTimeout(function(){
 - **not** just the style/indentation —> that is just a side-effect
 - you can 'fix' the stylistic aspect with continuation passing or using named functions
 - we've tried various things to get everything to work, but it usually doesn't -> two callbacks for err & val, 
+-----
 
 ## Thunks
 - a function that has everything it needs to give you a value back
@@ -94,6 +103,7 @@ var thunk = function() {
 
 thunk(); // 25
 ```
+-----
 
 ## Promises
 - ~ future values
@@ -125,4 +135,50 @@ promise.then(finish, error);
 - flow control: can be accomplished via promise chaining
 - try to **not** use tons of inline function calls in promise chains
 - each `.then()` call returns a new promise using the default `resolve()` handler
+
+## Promise Abstractions
+1. `Promise.all(Array[Promise]), -> Promise`
+	- normalizes an array of promises, returns an ordered array of the completion results
+    - ~ **gate**
+2. `Promise.race(Array[Promise]), -> Promise`
+
+-----
+
+## Generators
+- do not have a run-to-completion semantic
+- (also not from JavaScript)
+- syntatic form of declaring a state-machine; these declaratively step through a series of transformations
+- new keyword `yield`
+- local blocking; cooperative concurrency (as opposed to preemptive concurrency)
+
+```   
+    Generator *
+		  v
+function()* {
+	console.log('hi');
+	yield;
+    console.log('Hi');
+}
+
+var it = gen();
+it.next(); // Hello
+it.next(); // World
+```
+
+- can be used for message passing
+
+```
+function* main(){
+	yield 1;
+    yield 2;
+}
+let it = main();
+it.next(); // {value: 1, done: false}
+it.next(); // {value: 2, done: false}
+
+it.next(); // {value: undefined, done: true}
+
+```
+- if you return from a generator, that value will be the last one sent to a `.next()` call
+- **promises + generators**: yield promises, the promises will resolve the generator
 
