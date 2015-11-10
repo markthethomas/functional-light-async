@@ -191,4 +191,5 @@ it.next(); // {value: undefined, done: true}
 - **generators**: pause with `yield`, resume with `#next()`
  	- yield a promise, a promise can then resume the generator
     
-    
+## Observables
+- concurrency: events (+ Promises)?
